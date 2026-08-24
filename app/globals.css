@@ -86,16 +86,14 @@ footer{padding-top:65px}.footer-main{display:grid;grid-template-columns:1.5fr 1f
 /* Motion belongs to actions, not decorative artwork */
 .hero,.hero:before,.hero:after,.protection-stage,.protection-stage:before,.protection-stage:after,.pulse-orb,.spark,.stage-ring,.float-pill,.service-cloud,.cloud-chip,.ticker>div{animation:none!important}
 .button,.outline-button,.text-link,.floating-call{position:relative;overflow:hidden;isolation:isolate}.button:before,.outline-button:before,.text-link:before,.floating-call:before{content:"";position:absolute;z-index:-1;inset:-2px auto -2px -45%;width:35%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);transition:left .55s cubic-bezier(.2,.8,.2,1)}.button:hover:before,.outline-button:hover:before,.text-link:hover:before,.floating-call:hover:before{left:120%}.button svg,.outline-button svg,.text-link svg,.floating-call svg{transition:transform .25s cubic-bezier(.2,.8,.2,1)}.button:hover svg,.outline-button:hover svg,.text-link:hover svg{transform:translate(3px,-3px)}.button:active,.outline-button:active,.text-link:active,.floating-call:active{transform:translateY(1px) scale(.97)}
-.desktop-cta{animation:ctaGlow 3.6s ease-in-out infinite}.floating-call{animation:callGlow 3.2s ease-in-out infinite;transition:transform .24s ease,box-shadow .24s ease}.floating-call:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 20px 48px rgba(244,67,77,.48)}.floating-call:hover svg{transform:rotate(-12deg) scale(1.12)}
+.desktop-cta,.floating-call{animation:none}.floating-call{transition:transform .24s ease,box-shadow .24s ease}.floating-call:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 20px 48px rgba(244,67,77,.48)}.floating-call:hover svg{transform:rotate(-12deg) scale(1.12)}
 .site-header nav a{position:relative;transition:color .22s ease,transform .22s ease}.site-header nav a:after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:2px;background:var(--red);transition:right .28s cubic-bezier(.2,.8,.2,1)}.site-header nav a:hover{transform:translateY(-2px)}.site-header nav a:hover:after{right:0}
 .service-card:active{transform:translateY(-1px) scale(.985)}
 @keyframes ctaGlow{0%,100%{box-shadow:0 0 0 0 rgba(244,67,77,0)}50%{box-shadow:0 10px 30px 4px rgba(244,67,77,.2)}}@keyframes callGlow{0%,100%{box-shadow:0 16px 40px rgba(244,67,77,.3)}50%{box-shadow:0 16px 40px rgba(244,67,77,.48),0 0 0 8px rgba(244,67,77,.08)}}
 @media(prefers-reduced-motion:reduce){.desktop-cta,.floating-call{animation:none!important}.button:before,.outline-button:before,.text-link:before,.floating-call:before{display:none}}
 
-/* Always-visible button motion */
-.button:before,.outline-button:before,.text-link:before,.floating-call:before{z-index:2;pointer-events:none;left:-55%;animation:buttonSweep 2.8s ease-in-out infinite}.button svg,.outline-button svg,.text-link svg{animation:arrowNudge 1.35s ease-in-out infinite}.button{box-shadow:0 10px 26px rgba(244,67,77,.2)}.button:hover{box-shadow:0 16px 34px rgba(244,67,77,.34)}
-@keyframes buttonSweep{0%,48%{left:-55%;opacity:0}58%{opacity:1}78%,100%{left:125%;opacity:0}}@keyframes arrowNudge{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-3px)}}
-@media(prefers-reduced-motion:reduce){.button svg,.outline-button svg,.text-link svg{animation:none!important}}
+/* Buttons stay visually stable until the visitor interacts with them. */
+.button:before,.outline-button:before,.text-link:before,.floating-call:before{z-index:2;pointer-events:none;animation:none}.button svg,.outline-button svg,.text-link svg{animation:none}.button{box-shadow:0 10px 26px rgba(244,67,77,.2)}.button:hover{box-shadow:0 16px 34px rgba(244,67,77,.34)}
 
 /* Hero copy now stands on its own; the local-service constellation is the animated centerpiece. */
 .hero{grid-template-columns:minmax(0,850px);justify-content:center;text-align:center}
