@@ -1,4 +1,4 @@
-﻿const allowedServices = new Set([
+const allowedServices = new Set([
   "Auto Insurance",
   "Business Owners",
   "Contractors",
@@ -30,6 +30,7 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as Record<string, unknown>;
 
+    // Honeypot
     if (clean(body.company, 100)) {
       return Response.json({ ok: true }, { status: 202 });
     }
@@ -61,6 +62,7 @@ export async function POST(request: Request) {
 
     if (!apiKey) {
       console.error("RESEND_API_KEY is not configured.");
+
       return Response.json(
         { error: "Email service is not configured." },
         { status: 500 }
@@ -128,7 +130,7 @@ export async function POST(request: Request) {
     return Response.json(
       {
         error:
-          "We couldn't send your request. Please call or text (718) 844-1340.",
+          "We couldn’t send your request. Please call or text (718) 844-1340.",
       },
       { status: 500 }
     );
