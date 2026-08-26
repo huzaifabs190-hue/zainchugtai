@@ -40,9 +40,10 @@ test("analytics requires consent and email remains environment-driven", async ()
   assert.match(route, /QUOTE_NOTIFICATION_EMAIL/);
 });
 
-test("Google reviews sync stays server-side and has a complete-list fallback", async () => {
+test("Google reviews sync stays server-side and renders reviews on-site", async () => {
   const [reviews, api, env] = await Promise.all([read("app/ReviewsSection.tsx"), read("app/api/google-reviews/route.ts"), read(".env.example")]);
-  assert.match(reviews, /See all reviews on Google/);
+  assert.match(reviews, /Reviews from Google/);
+  assert.doesNotMatch(reviews, /See all reviews on Google/);
   assert.match(reviews, /\/api\/google-reviews/);
   assert.match(api, /GOOGLE_PLACES_API_KEY/);
   assert.match(api, /GOOGLE_PLACE_ID/);
