@@ -104,7 +104,7 @@ export default function Home() {
 
     <ReviewsSection/>
 
-    <section className="faq-section section" id="faq"><div className="faq-title reveal"><p className="eyebrow dark"><span/> GOOD TO KNOW</p><h2>Questions,<br/>answered.</h2><p>Need something else? Call or text us directly.</p></div><div className="faq-list">{faqs.map((f,i)=><article className={`faq-item reveal ${openFaq===i?"open":""}`} key={f[0]}><button onClick={()=>setOpenFaq(openFaq===i?null:i)} aria-expanded={openFaq===i}><span>{f[0]}</span><b>{openFaq===i?"−":"+"}</b></button><div><p>{f[1]}</p></div></article>)}</div></section>
+    <section className="faq-section section" id="faq"><div className="faq-title reveal"><p className="eyebrow dark"><span/> GOOD TO KNOW</p><h2>Questions,<br/>answered.</h2><p>Need something else? Call or text us directly.</p></div><div className="faq-list">{faqs.map((f,i)=><article className={`faq-item ${openFaq===i?"open":""}`} key={f[0]}><button onClick={()=>setOpenFaq(openFaq===i?null:i)} aria-expanded={openFaq===i}><span>{f[0]}</span><b>{openFaq===i?"−":"+"}</b></button><div><p>{f[1]}</p></div></article>)}</div></section>
 
     <section className="visit-section"><div className="visit-copy reveal"><p className="eyebrow"><span/> VISIT THE OFFICE</p><h2>Right here in<br/>Bristol.</h2><p>1019 Farmington Avenue, Suite 5<br/>Bristol, CT 06010</p><a className="button light-button" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&query=1019+Farmington+Ave+Suite+5+Bristol+CT+06010">Get directions <Arrow/></a></div><div className="map-art" aria-hidden="true"><span className="road r1"/><span className="road r2"/><span className="road r3"/><div className="map-pin"><i/><strong>IFR</strong></div><b>FARMINGTON AVE</b></div></section>
 
