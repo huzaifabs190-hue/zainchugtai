@@ -51,6 +51,13 @@ export default function Home() {
     return()=>observer.disconnect();
   },[]);
 
+  useEffect(()=>{
+    if(!selected)return;
+    const closeOnEscape=(event:KeyboardEvent)=>{if(event.key==="Escape")setSelected(null)};
+    document.addEventListener("keydown",closeOnEscape);
+    return()=>document.removeEventListener("keydown",closeOnEscape);
+  },[selected]);
+
   async function submitQuote(event:FormEvent<HTMLFormElement>){
     event.preventDefault();
     const form=event.currentTarget;
@@ -104,6 +111,6 @@ export default function Home() {
     <footer id="contact"><div className="footer-main"><div><a className="footer-wordmark" href="#top"><strong>INSURANCE &amp; FINANCIAL</strong><small>REALTY LLC</small></a><p>Solutions that fit your world.</p></div><div><small>CONTACT</small><a href={`tel:${phone}`}>(718) 844-1340</a><a href="#quote">Send an online request</a><p>{email}</p></div><div><small>VISIT</small><p>1019 Farmington Ave<br/>Suite 5<br/>Bristol, CT 06010</p></div><div><small>EXPLORE</small><a href="#services">Services</a><a href="#about">About</a><a href="#quote">Free quote</a><a href="/privacy">Privacy policy</a><a href="/disclaimer">Insurance disclaimer</a></div></div><div className="footer-bottom"><p>© 2026 Insurance &amp; Financial Realty LLC</p><p>Zain Chughtai · Owner · Licensed Broker</p><a href="#top">Back to top ↑</a></div></footer>
 
     <a className="floating-call" href="#quote" aria-label="Open the quote request form"><span><Phone aria-hidden="true" size={17} strokeWidth={2.2}/></span><b>Request help</b></a>
-    {selected&&SelectedIcon&&<div className="modal-backdrop" role="presentation" onClick={()=>setSelected(null)}><article className="service-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={e=>e.stopPropagation()}><button className="modal-close" onClick={()=>setSelected(null)} aria-label="Close service details">×</button><span className="plan-icon"><SelectedIcon aria-hidden="true" size={25} strokeWidth={1.8}/></span><small>{selected.group}</small><h2 id="modal-title">{selected.title}</h2><p>{selected.detail}</p><div><a className="button" href="#quote" onClick={()=>setSelected(null)}>Request help <Arrow/></a><a className="outline-button" href={`tel:${phone}`}>Call now</a></div></article></div>}
+    {selected&&SelectedIcon&&<div className="modal-backdrop"><article className="service-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description"><button className="modal-close" onClick={()=>setSelected(null)} aria-label="Close service details">×</button><span className="plan-icon"><SelectedIcon aria-hidden="true" size={25} strokeWidth={1.8}/></span><small>{selected.group}</small><h2 id="modal-title">{selected.title}</h2><p id="modal-description">{selected.detail}</p><div><a className="button" href="#quote" onClick={()=>setSelected(null)}>Request help <Arrow/></a><a className="outline-button" href={`tel:${phone}`}>Call now</a></div></article></div>}
   </main>;
 }
